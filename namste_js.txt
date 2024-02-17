@@ -1,0 +1,155 @@
+everything inside js happens in the execution context .
+execution context is a big container in which whole js is executed .
+execution context has two components one is memory(variable environment) where all variable, function is store .
+other component is code component ( thread of execution) it is a thread where whole execution happens at one time.
+js is synchronous single threaded language .( one command at a time in one by one ).
+what happens when u run code in js .
+when u write js code than execution context is created. (global execution context).
+1) phase memory creation phase :- here js will allocate all the memory to variable and function.
+variable mate e undefined kare aane function maate aakho code save kare.
+2) code execution phase:- aa phase ma variable ne value assign thati hoi che .
+ane jyare js ma function call thato hoi che tyaare navo execution context create thai che alag thi.
+js has its own call stack (in stack the gec is always at the bottom) 
+this stack is use for the execution context where it can control all the execution
+call stack maintain the order of execution of the execution context.
+
+hoisting is the one of the phenomena in which you can access variable and function even before u initlize it .
+here in the variable it will give undefined value while as in function it will give whole function .
+the difference between not defined and undefined is in not defined the var is called without beign created .
+and in undefined the var is called before the execution.
+var by default undefined aaj return kare jo ene pela call kari naikho hoi bhale pachi ena thi function banaviyo hoi to pan .
+
+shortest js program is an empty file . 
+as we know the js program is executed then the global execution context is created .
+it also create the window . window contains lot of objects and function of js engine .
+window (global object)objects also create this keyword .
+at the globall level this object is equal to the window object
+chrome has its own js engine that is v8.
+all engine has work of creating global object .
+global object is parent of every other object in js .
+every object has property and methods .
+property are key and method are values .
+
+undefined is like taking the memory or we can say allocating the memory .
+not defined means not allocating the memory .
+JS is a loosely typed language (weakly typed language). This video covers an in-depth analysis of the undefined keyword and mistakes you should avoid while using this keyword.
+nderstand the difference between undefined and not defined in JS. Many developers assume that undefined is exactly the same as not defined, but that's not true. undefined is a value in JavaScript and in fact, it also takes up memory space.
+
+
+lexical enviorment of js (whenever execution context is created lexical enviorment is also created )it is the local memory along with the lexical(sequence hireachy) enviorment of parent
+scope means where you can access specfic function and varaible 
+scope chain means the finding the value from child to the parent in the lexical enviorment until its find.
+
+temporal deadzone :- let and const declaration is hoisted so when we declare any thing with the help of var keyword then it can be used before the declaration . but not in this case
+let and const are store in different memory space u cannot access it without giving any value to it.
+temporal deadzone means the time between let variable is hoisted and tilll its initlize the value .
+refrence error means when we call any variable which is not defined have no any refrence to the memory . but if it is declare with let keyword then it will be refrence error with temporal deadzone
+as we know that different memory is allocated to the let and const so it cannot be access from the window object it will show undefined
+if we redeclare any thing we get the syntax error.
+(ai)const is block scoped but it does not have temporal dead zone so if we declare with const we can access the value before initializing the value.
+in const we have to declare value when we are going to initlize.
+syntax error -  means some thing is missing in the syntax.
+type error - assign to the const varaible
+refrence error -   it is access before the initlization
+not defined - never place in the memory.
+const :- jyare value pachi aapde use na karvi hoi tyare aapde const vapriye 
+let:-  
+temporal deadzone thi bachava mate hamesha declaration upar kari nakhvu.
+
+block(compound statement):- combine multiple js statement in a group cause sometimes we need to execute this whole at one time 
+or we can say where js except single statement 
+block scope means for all variable and function we can access inside the block .
+js follow the concept of shadowing which is when u declare something with some value and again declare with the other value then the first value is not be printed.
+but the shadowing is reverse in the let and const
+
+clousers :- function bind with its lexical enviorment(function along with its lexical scope forms a clousers)( it remembers the refrence or we can say lexical scope that is given to the code)
+as we know that the function is heart of js we can declare function in variable function inside function also in return argument 
+
+interview:- clousers( each and every function in js has access to its outer lexical enviorment means access to the fun and var to the outer parents lexical enviorment)
+clousers are also used for the data hiding
+
+function statement(declaration) :- normal function syntax can be called as function statement
+function  expression:- function can act as a value you can declare to any variable.
+the difference between this to is hoisting the statement can execute before the execution but in the case of expression it will be undefined due to var.
+
+anonymous function :- the function which does not have its own identity (gives syntax error) used when the function is used as a values.
+
+named function expression :- expression function with function name 
+
+parameters , argument :- value declaration along with function declaration is called as parameters and the value that is given when the function is called is called argument.
+
+first class function :- the ability to use function as values is called as first class function.
+function are called as first class citiezen
+
+arrow function :- 
+callBack function :- when one function is passed in the another function then its is called as callBack function
+JavaScript is synchronus single thread language but due to callBack we can do it async 
+setTimeout is also return the call back function 
+what is executing in js is going to execute through the callstack
+if any operation is stoping the execution of callstack is called as the blocking of main thread
+
+eventListner :- 
+garbage collection and remove eventListner
+
+js is synchronus single threaded language it has one call stack(present inside the js engine) and do one work at a time 
+the main job of the call stack is to execute whatever comes into it
+the browser has the js engine and js engine has call stack and call stack has global execution context.
+browser has also local storage , timer ,etc.. browser is most powerfull 
+to connect the js with those super powers of browser we have web-api
+as we know window is the global object that we can access all the features of the browser using window
+event loop :- aa check pela ke call stack khali che ke nai aane pachi check kare ke callBack Queue ma kai execute karva mate che ke nai agar hoi toh ene call stack ma nakhi dei.
+callBack Queue :- aani aandar call back function hoi che 
+micro-task Queue :- higher priority (event loop hamesha aanej pela execute karve)
+satarvation :- jyare micro-task Queue ma microtask hoi te andar ne andar micro task banve rakhe toh pachi ena lidhe callBack Queue ma task no varo na aave
+
+js runtime enviorment :- 
+js engine:- (  you can create your own js engine like v8(google , node js ) by following  ecma script standards)
+it take codes as a input and goes into the 3 steps parsing, compilation, execution.
+in parsing the code is divded into the tokens and abstract syntax tree(ast) is genreated.
+jit compilation :-
+google v8 engine is the one of the fastest js engine . which have ignition compiler and turbofan(compiler)
+
+trust issues with call stack . (concorency model in js )
+
+higher order function :- a function which take other function as an argument or return function from function is called as higher order function 
+functional programing:-
+
+Map function :- use to transform an array . aakha array ma game e ek function thi change karvo hoi tyare map function kaam aave
+Filter function :- use to find what we want to search in the whole array.
+Reduce:- if we want to use array like sum or max of array then we use Reduce function ( use to iterate the array )
+aani andar 2 function pass thai che ek acc , curr , acc use to accumlate the value and curr gives the cureent index of array
+
+callBack:- callBack hell ( pyramid of dom)
+
+Promises is the new way of handling asynchronous operations in JavaScript.
+generally we can do async js with the help of callBack function but in callBack there is dependency in the  callbacks so if you have 5 then you need to pass the result of one inside another like.
+promise chaining : when one promise gets resolved then another promise will get executed.
+promise is an empty object with a data in it.which is undefined.
+aama thai evu ke aama aapde aapda function ne attach kariye promise bhego alag thi kemke promise ma jyare data aavse tyare ee call thase em nem nai call thai.
+fetch :- use make external api calls  this will return us a promise 
+promise have two state one is state and one is result 
+3 staes of Promises pending , fullfil , respose .
+then method is used for getting the value from the promise
+defination of promise in innterview :- promise is like a placeholder which will be filled later with the values .
+promise is object represneting eventual completion of async opreation.
+Promise Constructor is used with the new keyword to create a new Promise
+this Constructor pass a function with two parameters like reject and resolve.
+if the function does not return anything then this will be reject will done.
+and if it return something then it will resolve.
+
+async & await :-
+async is a keyword used before the function to make the  function become async.
+async function always return a promise .
+agar aapde ekei async function ma kai return karviye toh promise naa form ma return thai .
+ await is used inside async function to wait until the promise gets resolved or rejected.
+  when ever we use await it stops the execution of the code till the promise gets resolved or rejected.
+
+async and await combo is used to handle promises.
+await is the keyword which can be always used inside the async function.
+in this method js engine wait for the upper function to be execute after it execute then it will not print the upper value but first lower than upper.
+
+how fetch works :- it will return you a promise as a respose object.
+
+error handling
+
+
